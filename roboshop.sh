@@ -1,6 +1,8 @@
 #!/bin/bash
+SG_ID="sg-076ec9ad23dab2b28" # replace with your ID
 AMI_ID="ami-0220d79f3f480ecf5"
-SG_ID="sg-08215fd9bc2dcf991"
+ZONE_ID="Z05013202FKF0ZL12WAOP"
+DOMAIN_NAME="daws88s.online"
 
 for instance in $@
 do
@@ -11,6 +13,23 @@ do
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
     --query 'Instances[0].InstanceId' \
     --output text )
-echo "created"
-done
 
+    if [ $instance == "frontend" ]; then
+        IP=$(
+            aws ec2 describe-instances \
+            --instance-ids $INSTANCE_ID \
+            --query 'Reservations[].Instances[].PublicIpAddress' \
+            --output text
+        )
+        
+    else
+        IP=$(
+            aws ec2 describe-instances \
+            --instance-ids $INSTANCE_ID \
+            --query 'Reservations[].Instances[].PrivateIpAddress' \
+            --output text
+        )
+    fi
+
+    echo "$IP"
+done
