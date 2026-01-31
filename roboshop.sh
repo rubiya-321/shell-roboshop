@@ -29,4 +29,5 @@ do
             --output text
         )
         fi
+        echo "$IP"
 done
