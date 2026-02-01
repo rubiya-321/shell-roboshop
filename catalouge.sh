@@ -55,7 +55,7 @@ VALIDATE $? "unzip the app code"
 npm install &>>$LOGS_FILE
 VALIDATE $? "installing the dependencies"
 
-cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
+cp $SCRIPT_DIR/catalouge.service /etc/systemd/system/catalouge.service
 VALIDATE $? "Created systemctl service"
 
 systemctl daemon-reload
