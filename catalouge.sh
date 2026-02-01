@@ -40,13 +40,13 @@ else
     echo -e "Roboshop user already exist ... $Y SKIPPING $N"
 fi
 
-mkdir /app 
+mkdir -p /app 
 VALIDATE $? "craete app directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOGS_FILE
 VALIDATE $? "downloading the app code"
 
-cd -p /app
+cd /app
 VALIDATE $? "cahnging into app directory"
 
 unzip /tmp/catalogue.zip &>>$LOGS_FILE
