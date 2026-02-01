@@ -46,7 +46,7 @@ VALIDATE $? "craete app directory"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOGS_FILE
 VALIDATE $? "downloading the app code"
 
-cd /app
+cd -p /app
 VALIDATE $? "cahnging into app directory"
 
 unzip /tmp/catalogue.zip &>>$LOGS_FILE
