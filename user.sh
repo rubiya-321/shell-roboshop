@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then
     echo -e "user alreated created.......$Y skipping $N"
 fi
 
-mkdir /app 
+mkdir -p /app 
 VALIDATE $? "craeting a directory"
 
 curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip &>>$LOGS_FILE
