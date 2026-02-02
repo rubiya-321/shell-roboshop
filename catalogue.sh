@@ -7,6 +7,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+SCRIPT_DIR="$PWD"
+MONGODB_HOST="mongodb.rubiya88s.online"
+
 if [ $USERID -ne 0 ]; then
     echo -e "$R Please run this script with root user access $N" | tee -a $LOGS_FILE
     exit 1
