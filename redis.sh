@@ -1,16 +1,16 @@
-#!/bin/bash
-user_id=$(id -u)
-LOGS_FOLDER= "/var/log/shell-roboshop"
-LOGS_FILE= "$LOGS_FOLDER/$0.log"
+USERID=$(id -u)
+LOGS_FOLDER="/var/log/shell-roboshop"
+LOGS_FILE="$LOGS_FOLDER/$0.log"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-   if (user_id -ne 0)then
-     echo -e "$R run the script by using root user$N" $LOGS_FILE
-     exit 1
-   fi
+if [ $USERID -ne 0 ]; then
+    echo -e "$R Please run this script with root user access $N" | tee -a $LOGS_FILE
+    exit 1
+fi
+
 mkdir -p $LOGS_FOLDER
 
 VALIDATE(){
