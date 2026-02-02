@@ -47,9 +47,8 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>LOGS_FILE
 VALIDATE "unzipping the code"
 
-
-cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf 
-VALIDATE $?"copying nginix file" 
+cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
+VALIDATE $? "copying nginx file"
 
 systemctl restart nginx 
 VALIDATE $? "restart nginix"
