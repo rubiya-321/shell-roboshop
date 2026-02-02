@@ -34,13 +34,12 @@ dnf install nodejs -y &>>$LOGS_FILE
 VALIDATE $? "installing node js"
 
 id roboshop &>>$LOGS_FILE
-
-if [$? -ne 0];then
-    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+if [ $? -ne 0];then
+    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOGS_FILE
     valiadte $? "sysytem user created"
 
   else
-    echo "user alreated created.......$Y skipping $N"
+    echo -e "user alreated created.......$Y skipping $N"
 fi
 
 mkdir /app 
@@ -61,7 +60,7 @@ VALIDATE $? "unzip the code"
 npm install  &>>$LOGS_FILE
 VALIDATE $? "downloading the dependencies"
 
-cp $SCRIPT_DIR/user.service/etc/systemd/system/user.service
+cp $SCRIPT_DIR/user.service /etc/systemd/system/user.service
 VALIDATE $? "starting systemctl services"
 
 systemctl daemon-reload
