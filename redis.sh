@@ -39,6 +39,6 @@ sed -i -e "/protected-mode/ c protected-mode/no" /etc/redis/redis.conf
 VALIDATE $? "changing protected mode from yes to no"
 
 systemctl enable redis &>>$LOGS_FILE
-systemctl start redis &>>$LOGS_FILE
+systemctl start redis 
 
 VALIDATE $? "enabling and restating redis"
