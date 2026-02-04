@@ -58,7 +58,7 @@ VALIDATE $? "unzip the app code"
 npm install &>>$LOGS_FILE
 VALIDATE $? "installing the dependencies"
 
-cp $SCRIPT_DIR/cart.services /etc/systemd/system/cart.services
+cp $SCRIPT_DIR/cart.service /etc/systemd/system/cart.service
 VALIDATE $? "Created systemctl services"
 
 systemctl daemon-reload
